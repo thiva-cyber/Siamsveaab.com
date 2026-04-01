@@ -1012,6 +1012,7 @@
 </footer>
 
 <script>
+ <script>
   // ── SCROLL REVEAL ──
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1020,7 +1021,7 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // ── CONTACT FORM VALIDATION ──
+  // ── CONTACT FORM ──
   function submitContactForm() {
     const name    = document.getElementById('f-name');
     const email   = document.getElementById('f-email');
@@ -1048,7 +1049,7 @@
 
     if (!valid) return;
 
-   btn.disabled = true;
+    btn.disabled = true;
     btn.textContent = 'Sending…';
 
     fetch('/api/contact', {
@@ -1080,7 +1081,8 @@
       btn.disabled = false;
       btn.textContent = 'Send Message';
       alert('Something went wrong. Please email us directly.');
-    
+    });
+  }
 
   // Live clear errors on input
   ['f-name','f-email','f-message'].forEach(id => {
@@ -1088,6 +1090,7 @@
       this.classList.remove('error');
     });
   });
+</script>
 </script>
 </body>
 </html>
