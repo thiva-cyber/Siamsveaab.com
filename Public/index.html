@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
 <meta charset="UTF-8" />
-<link rel="icon" type="image/png" href="/favicon.png?v=2" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SiamSvea — Website Services</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
@@ -489,44 +487,206 @@
   }
 
   /* ── CONTACT ── */
+  /* ── CONTACT SECTION ── */
   .contact-section {
     background: var(--indigo-deep);
-    text-align: center;
     position: relative;
     overflow: hidden;
-  }
-
-  .contact-inner {
-    max-width: 600px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
   }
 
   .contact-section::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.1) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 60%);
+    pointer-events: none;
   }
 
-  .contact-email {
-    display: inline-block;
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 4rem;
+    align-items: start;
     margin-top: 3rem;
-    padding: 1.5rem 3rem;
+  }
+
+  @media (max-width: 860px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+
+  /* Info panel */
+  .contact-info-panel { position: relative; z-index: 2; }
+
+  .contact-email-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+    padding: 1rem 1.75rem;
     border: 1px solid rgba(201,168,76,0.3);
     color: var(--gold);
     text-decoration: none;
-    font-size: 1rem;
-    letter-spacing: 0.05em;
-    transition: background 0.3s, border-color 0.3s;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
     border-radius: 2px;
+    transition: background 0.3s, border-color 0.3s;
   }
 
-  .contact-email:hover {
-    background: rgba(201,168,76,0.1);
+  .contact-email-link:hover {
+    background: rgba(201,168,76,0.08);
     border-color: var(--gold);
   }
+
+  .contact-meta {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .contact-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--text-light);
+  }
+
+  .contact-meta-item .meta-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.6;
+    flex-shrink: 0;
+  }
+
+  /* Form card */
+  .contact-form-card {
+    background: var(--indigo-mid);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 4px;
+    padding: 2.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .contact-form-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 40px; height: 40px;
+    border-top: 1px solid rgba(201,168,76,0.4);
+    border-left: 1px solid rgba(201,168,76,0.4);
+    pointer-events: none;
+  }
+
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 1.75rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  .field {
+    margin-bottom: 1.25rem;
+  }
+
+  .field label {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    background: var(--indigo-deep);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 2px;
+    padding: 0.75rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.25s;
+    appearance: none;
+  }
+
+  .field input::placeholder,
+  .field textarea::placeholder { color: rgba(154,158,184,0.5); }
+
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    border-color: rgba(201,168,76,0.5);
+  }
+
+  .field input.error,
+  .field select.error,
+  .field textarea.error {
+    border-color: rgba(212,96,122,0.6);
+  }
+
+  .field-error {
+    font-size: 0.72rem;
+    color: #D4607A;
+    margin-top: 0.3rem;
+    display: none;
+  }
+
+  .field-error.visible { display: block; }
+
+  .field textarea { resize: vertical; min-height: 110px; }
+
+  .form-submit-btn {
+    width: 100%;
+    background: var(--gold);
+    color: var(--indigo-deep);
+    border: none;
+    padding: 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.25s, transform 0.15s;
+    margin-top: 0.5rem;
+  }
+
+  .form-submit-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .form-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  .form-success {
+    display: none;
+    margin-top: 1.25rem;
+    padding: 1rem 1.25rem;
+    background: rgba(63,110,17,0.12);
+    border: 1px solid rgba(99,153,34,0.35);
+    border-radius: 2px;
+    font-size: 0.875rem;
+    color: #97C459;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .form-success.visible { display: block; }
 
   .contact-tagline {
     margin-top: 2rem;
@@ -754,16 +914,87 @@
 <!-- CONTACT -->
 <section id="contact" class="contact-section">
   <div class="container">
-    <div class="contact-inner reveal">
+
+    <div class="reveal">
       <p class="section-label">Let's Build Together</p>
       <h2 class="section-title">Ready to create<br><em>something great?</em></h2>
-      <p class="section-lead" style="margin: 0 auto; text-align:center;">Whether you prefer a one-time project or a long-term partnership, we offer flexible solutions tailored to your needs. Reach out and let's get started.</p>
+      <p class="section-lead">Whether you prefer a one-time project or a long-term partnership, we offer flexible solutions tailored to your needs.</p>
+    </div>
 
-      <a href="mailto:siamsveaab@gmail.com" class="contact-email">
-        ✦ &nbsp; siamsveaab@gmail.com &nbsp; ✦
-      </a>
+    <div class="contact-grid reveal" style="transition-delay: 0.15s;">
 
-      <p class="contact-tagline">Response within 24 hours · Based in Sweden</p>
+      <!-- INFO PANEL -->
+      <div class="contact-info-panel">
+        <p style="font-size:0.95rem; color:var(--text-light); line-height:1.8; margin-bottom:0.5rem;">
+          Send us a message and we'll get back to you within 24 hours. No jargon, no pressure — just a friendly conversation about your project.
+        </p>
+
+        <a href="mailto:siamsveaab@gmail.com" class="contact-email-link">
+          ✦ &nbsp; siamsveaab@gmail.com
+        </a>
+
+        <div class="contact-meta">
+          <div class="contact-meta-item">
+            <span class="meta-dot"></span>
+            Based in Stockholm, Sweden
+          </div>
+          <div class="contact-meta-item">
+            <span class="meta-dot"></span>
+            Response within 24 hours
+          </div>
+          <div class="contact-meta-item">
+            <span class="meta-dot"></span>
+            Swedish &amp; English spoken
+          </div>
+          <div class="contact-meta-item">
+            <span class="meta-dot"></span>
+            Free initial consultation
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT FORM -->
+      <div class="contact-form-card">
+        <h3 class="form-title">Send a message</h3>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="f-name">Your name</label>
+            <input type="text" id="f-name" placeholder="Anna Lindqvist" autocomplete="name"/>
+            <p class="field-error" id="err-name">Please enter your name.</p>
+          </div>
+          <div class="field">
+            <label for="f-email">Email address</label>
+            <input type="email" id="f-email" placeholder="anna@example.com" autocomplete="email"/>
+            <p class="field-error" id="err-email">Please enter a valid email.</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-plan">Plan of interest</label>
+          <select id="f-plan">
+            <option value="">Not sure yet — happy to discuss</option>
+            <option value="one-time">One-Time Payment (from 1,500 SEK)</option>
+            <option value="monthly">Monthly Plan (500SEK/mo)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="f-message">Your message</label>
+          <textarea id="f-message" placeholder="Tell us about your project, your business, or what you need…"></textarea>
+          <p class="field-error" id="err-message">Please write a short message.</p>
+        </div>
+
+        <button class="form-submit-btn" id="submit-btn" onclick="submitContactForm()">
+          Send Message
+        </button>
+
+        <div class="form-success" id="form-success">
+          ✦ &nbsp; Thank you! Your message has been sent.<br>
+          <span style="font-size:0.8rem; opacity:0.8;">We'll be in touch within 24 hours.</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -781,16 +1012,62 @@
 </footer>
 
 <script>
-  // Scroll reveal
+  // ── SCROLL REVEAL ──
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+      if (entry.isIntersecting) entry.target.classList.add('visible');
     });
   }, { threshold: 0.1 });
-
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── CONTACT FORM VALIDATION ──
+  function submitContactForm() {
+    const name    = document.getElementById('f-name');
+    const email   = document.getElementById('f-email');
+    const message = document.getElementById('f-message');
+    const btn     = document.getElementById('submit-btn');
+    const success = document.getElementById('form-success');
+
+    let valid = true;
+
+    function setError(field, errId, condition) {
+      const err = document.getElementById(errId);
+      if (condition) {
+        field.classList.add('error');
+        err.classList.add('visible');
+        valid = false;
+      } else {
+        field.classList.remove('error');
+        err.classList.remove('visible');
+      }
+    }
+
+    setError(name,    'err-name',    name.value.trim().length < 2);
+    setError(email,   'err-email',   !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()));
+    setError(message, 'err-message', message.value.trim().length < 10);
+
+    if (!valid) return;
+
+    // Simulate sending
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    setTimeout(() => {
+      success.classList.add('visible');
+      btn.style.display = 'none';
+      name.value = '';
+      email.value = '';
+      message.value = '';
+      document.getElementById('f-plan').value = '';
+    }, 1200);
+  }
+
+  // Live clear errors on input
+  ['f-name','f-email','f-message'].forEach(id => {
+    document.getElementById(id).addEventListener('input', function() {
+      this.classList.remove('error');
+    });
+  });
 </script>
 </body>
 </html>
