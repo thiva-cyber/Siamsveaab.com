@@ -38,12 +38,12 @@ const contactLimiter = rateLimit({
 // ── EMAIL TRANSPORTER ─────────────────────────────────────
 // Uses Gmail (configure with your real credentials or use SendGrid/Mailgun)
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false,
   auth: {
     user: process.env.EMAIL_USER || 'siamsveaab@gmail.com',
     pass: process.env.EMAIL_PASS || 'YOUR_APP_PASSWORD_HERE'
-    // For Gmail: use an App Password, not your main password
-    // https://support.google.com/accounts/answer/185833
   }
 });
 
