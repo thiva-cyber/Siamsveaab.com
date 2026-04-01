@@ -191,6 +191,9 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
 });
 
 // ── CATCH-ALL → serve frontend ────────────────────────────
+app.get('/google17c1c938f97e8d46.html', (req, res) => {
+  res.send('google-site-verification: google17c1c938f97e8d46.html');
+});
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
