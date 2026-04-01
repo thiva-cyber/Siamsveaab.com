@@ -25,7 +25,7 @@ app.use(helmet({
 }));
 app.use(cors());
 app.use(express.json({ limit: '10kb' }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'Public')));
 
 // Rate limiting: max 5 contact form submissions per 15 min per IP
 const contactLimiter = rateLimit({
@@ -195,7 +195,7 @@ app.get('/google17c1c938f97e8d46.html', (req, res) => {
   res.send('google-site-verification: google17c1c938f97e8d46.html');
 });
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'Public', 'index.html'));
 });
 
 // ── START ─────────────────────────────────────────────────
