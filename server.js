@@ -11,6 +11,13 @@ const path = require('path');
 
 const app = express();
 app.set('trust proxy', 1);
+// Redirect bare domain to www
+app.use((req, res, next) => {
+  if (req.hostname === 'siamsveaab.com') {
+    return res.redirect(301, 'https://www.siamsveaab.com' + req.url);
+  }
+  next();
+});
 const PORT = process.env.PORT || 3000;
 
 // ── MIDDLEWARE ────────────────────────────────────────────
