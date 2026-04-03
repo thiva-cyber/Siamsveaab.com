@@ -371,27 +371,7 @@
   btn.textContent = 'Send Message';
   alert('Something went wrong. Please email us directly.');
 });
-    .then(res => res.json())
-    .then(data => {
-      if (data.success) {
-        success.classList.add('visible');
-        btn.style.display = 'none';
-        name.value = '';
-        email.value = '';
-        message.value = '';
-        document.getElementById('f-plan').value = '';
-      } else {
-        btn.disabled = false;
-        btn.textContent = 'Send Message';
-        alert('Something went wrong. Please email us directly.');
-      }
-    })
-    .catch(() => {
-      btn.disabled = false;
-      btn.textContent = 'Send Message';
-      alert('Something went wrong. Please email us directly.');
-    });
-  }
+   
 
   ['f-name','f-email','f-message'].forEach(id => {
     document.getElementById(id).addEventListener('input', function() {
