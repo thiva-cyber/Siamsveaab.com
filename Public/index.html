@@ -341,37 +341,37 @@
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
-   fetch('https://formspree.io/f/mnjogpby', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    name: name.value.trim(),
-    email: email.value.trim(),
-    message: message.value.trim(),
-    plan: document.getElementById('f-plan').value || 'undecided'
-  })
-})
-.then(res => res.json())
-.then(data => {
-  if (data.ok) {
-    success.classList.add('visible');
-    btn.style.display = 'none';
-    name.value = '';
-    email.value = '';
-    message.value = '';
-    document.getElementById('f-plan').value = '';
-  } else {
-    btn.disabled = false;
-    btn.textContent = 'Send Message';
-    alert('Something went wrong. Please email us directly.');
+    fetch('https://formspree.io/f/mnjogpby', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: name.value.trim(),
+        email: email.value.trim(),
+        message: message.value.trim(),
+        plan: document.getElementById('f-plan').value || 'undecided'
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.ok) {
+        success.classList.add('visible');
+        btn.style.display = 'none';
+        name.value = '';
+        email.value = '';
+        message.value = '';
+        document.getElementById('f-plan').value = '';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+        alert('Something went wrong. Please email us directly.');
+      }
+    })
+    .catch(() => {
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+      alert('Something went wrong. Please email us directly.');
+    });
   }
-})
-.catch(() => {
-  btn.disabled = false;
-  btn.textContent = 'Send Message';
-  alert('Something went wrong. Please email us directly.');
-});
-   
 
   ['f-name','f-email','f-message'].forEach(id => {
     document.getElementById(id).addEventListener('input', function() {
